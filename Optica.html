@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 4: Transformador</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+                /* Navigation buttons */
+                .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Práctica 5: Óptica Geométrica</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#material">Material</a>
+        <a href="#teoria">Fundamentos Teóricos</a>
+
+        <a href="#realizacion">Preparación de la práctica</a>
+        <a href="#tarea">Tarea 1: Velocidad del sonido</a>
+    </div>
+
+    <section id="objetivos">
+        <h2>Objetivos</h2>
+        <ul>
+            <li>Determinar la distancia focal de una lente mediante las posiciones de los polos conjugados</li>
+            <li>Calcular el indice de refracción de una plastico usando la ley de Snell</li>
+            <li>Calcular el indice de refracción de una plastico midiento el ángulo límite</li>
+            <li>Visualizar la trayectoria de los rayos paralelos a ls salida de una lente convergente y una lente divergente</li>
+        </ul>
+    </section>
+
+            <!-- Materials section -->
+            <section id="material">
+                <h2>Material</h2>
+                <ul>
+                    <li>Fuente de luz que genera diferentes salidas de luz</li>
+                    <li>Placa blanca que actua como pantalla</li>
+                    <li>Dos lentes convergentes de distancias focales 100 mm y 200 mm</li>
+                    <li>Soportes y una via recta con escala en milimetros</li>
+                    <li>Reóstato: una resistencia variable al modificar la longitud</li>
+
+
+                </ul>
+            </section>
+
+    <!-- Section: Theory -->
+    <section id="teoria">
+        <section>
+            <h2>Fundamentos Teóricos</h2>
+        
+            <h3>Distancia Focal de una Lente</h3>
+            <p>
+                Una de las propiedades fundamentales de cualquier lente es la presencia de un <strong>foco</strong>. 
+                El foco se define como el punto donde convergen los rayos luminosos paralelos al eje óptico después de pasar a través de la lente. 
+                La <strong>distancia focal</strong> (\(f\)) es la distancia entre el centro óptico de la lente y su foco. 
+                En las cámaras, esta distancia se mide comúnmente en milímetros (mm).
+            </p>
+            <p>
+                Las lentes se clasifican según su forma y comportamiento con la luz:
+            </p>
+            <ul>
+                <li>
+                    <strong>Lentes Convergentes:</strong> Más gruesas en el centro que en los bordes, concentran (hacen converger) los rayos de luz en su foco.
+                </li>
+                <li>
+                    <strong>Lentes Divergentes:</strong> Más gruesas en los bordes que en el centro, separan (hacen diverger) los rayos de luz. 
+                    En este caso, el foco es el punto donde convergen las prolongaciones hacia atrás de los rayos refractados (ver Figura 1, izquierda).
+                </li>
+            </ul>
+            <p>
+                La distancia focal de una lente delgada es positiva para lentes convergentes y negativa para lentes divergentes.
+            </p>
+        
+            <figure>
+                <img src="figura1_convergente_divergente.png" alt="Punto focal y distancia focal de lentes">
+                <figcaption>Figura 1: Representación de lentes convergentes (derecha) y divergentes (izquierda).</figcaption>
+            </figure>
+        
+            <p>
+                La distancia focal de una lente es crucial para determinar la formación de imágenes nítidas y su capacidad de magnificación. 
+                Para medir la distancia focal, se puede utilizar el siguiente método:
+            </p>
+            <ol>
+                <li>Coloca la lente frente a un objeto lejano y ajusta la posición hasta que la imagen sea nítida en una pantalla.</li>
+                <li>Si la distancia entre el objeto y la pantalla (\(L\)) es fija, la lente puede posicionarse en dos ubicaciones diferentes para obtener una imagen enfocada.</li>
+                <li>Si \(a\) es la distancia entre el objeto y la lente en la primera posición, y \(b\) es la misma distancia en la segunda posición, la distancia focal se calcula como:
+                    \[
+                    f = \frac{a \cdot b}{L}
+                    \]
+                </li>
+            </ol>
+        
+            <p>
+                La imagen formada en la pantalla estará invertida respecto al objeto y su tamaño dependerá del <strong>factor de magnificación</strong>, que para lentes delgadas se calcula como:
+                \[
+                M = \left| \frac{y_i}{y_o} \right| = \frac{L - a}{a}
+                \]
+                Donde:
+                <ul>
+                    <li>\(y_i\): Tamaño de la imagen.</li>
+                    <li>\(y_o\): Tamaño del objeto.</li>
+                    <li>\(a\): Distancia del objeto a la lente en la primera posición.</li>
+                    <li>\(L\): Distancia entre el objeto y la pantalla.</li>
+                </ul>
+            </p>
+        
+            <h3>Ley de Snell y el Ángulo Límite</h3>
+            <p>
+                Cuando la luz viaja en el vacío, lo hace de manera rectilínea y a velocidad constante. Sin embargo, al entrar en un material, 
+                la velocidad de la luz cambia debido a su interacción con el medio. El <strong>índice de refracción</strong> (\(n\)) de un material 
+                se define como el cociente entre la velocidad de la luz en el vacío (\(c\)) y en el material (\(v\)):
+                \[
+                n = \frac{c}{v}
+                \]
+            </p>
+            <p>
+                En el aire, el índice de refracción es aproximadamente 1, ya que la velocidad de la luz en este medio es muy cercana a la del vacío.
+            </p>
+            <h4>Leyes Fundamentales de la Óptica Geométrica</h4>
+            <ul>
+                <li>
+                    <strong>Ley de Reflexión:</strong> Cuando un rayo de luz incide sobre una superficie reflectante plana, 
+                    el <strong>ángulo de incidencia</strong> (\(\theta_i\)) es igual al <strong>ángulo de reflexión</strong> (\(\theta_r\)).
+                </li>
+                <li>
+                    <strong>Ley de Refracción (Ley de Snell):</strong> Cuando un rayo de luz pasa de un medio a otro, parte del rayo se refleja 
+                    y parte se transmite, cambiando su dirección. La relación entre los ángulos de incidencia (\(\theta_i\)) y de transmisión (\(\theta_t\)) 
+                    se expresa como:
+                    \[
+                    n_1 \sin(\theta_i) = n_2 \sin(\theta_t)
+                    \]
+                    Donde:
+                    <ul>
+                        <li>\(n_1\): Índice de refracción del primer medio (e.g., aire).</li>
+                        <li>\(n_2\): Índice de refracción del segundo medio (e.g., vidrio o plástico).</li>
+                    </ul>
+                </li>
+            </ul>
+        
+            <figure>
+                <img src="figura2_refraccion.png" alt="Rayos incidente y refractado">
+                <figcaption>Figura 2: Ejemplo de refracción en dos medios.</figcaption>
+            </figure>
+        
+            <p>
+                Según la Ley de Snell, si un rayo pasa a un medio con menor índice de refracción, el ángulo de refracción será mayor que el ángulo de incidencia. 
+                Cuando el ángulo de incidencia supera un valor crítico, ocurre un fenómeno llamado <strong>reflexión total interna</strong>, donde no se transmite luz al segundo medio y toda la energía se refleja.
+            </p>
+        
+            <figure>
+                <img src="figura3_reflexion_total.png" alt="Reflexión total interna">
+                <figcaption>Figura 3: Ejemplo de reflexión total interna.</figcaption>
+            </figure>
+        </section>
+        
+        
+      
+    
+    <!-- Section: Assembly and Tasks -->
+    <section id="tarea 1">
+        <h2>Tarea 1: Distancia focal de una lente</h2>
+        <p>El obejtivo de la primera tarea es medir la distancia focal de una lente usando los pares conjugados</p>
+        <ol>
+            <li>Mide y anota el diámetro de la bobina plana de 8 espiras. La bobina de 8 espiras está en un soporte cuadrado con un agujero en el centro y dos tomas para conectar la corriente (ver Figura 6): </li>
+            <div class="figure">
+                <img src="img/campomagnetico/bobina_8_espiras.png" alt="Bobina de 8 espiras">
+                <figcaption>Figura 6: Bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Coloca la bobina en el soporte (Figura 1 (b)) y a continuación sujetala con el perno al soporte y que quede en posición vertical como se muestra en la Figura 7.</li>
+
+            <div class="figure">
+                <img src="img/campomagnetico/montaje_bobina_8espiras.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 7: Montaje para medir campo magnético en la bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Regula la altura del teslámetro para que la punta del tubo del teslámetro, que es donde esta la sonda, quede en el centro de la bobina (ver Figura 7). </li>
+            <li>Enciende el teslámetro (el botón de encendido se encuentra en la parte trasera del aparato) y ajusta el valor del campo magnético a cero. Es difícil obtener un valor fijo de 0 mT, pero el valor debería oscilar entre 0.01 o 0.02 mT. Para ajustar el teslametro, ver Figura 8. </li>
+            <div class="figure">
+                <img src="img/campomagnetico/teslametro_ajuste.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 8: Ajuste del teslámetro.</figcaption>
+            </div>
+            <li>Repite los apartados anteriores para las distancias indicadas en la tabla. </li>      
+            
+            <li>Ahora haz lo mismo para la lente de 200 mm. </li>  
+
+
+
+        </ol>
+    </section>
+    <section id="tarea 2">
+           
+        <h2>Tarea 2: B en función de la distancia</h2>
+
+        <ol>
+            <li>Manten el mismo montaje que para la tarea 1. Apaga la fuente de alimentación y vuelve a calibrar el teslámetro a 0 mT. </li>
+
+            <li>Enciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A </li>
+
+            <li>Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+    </section>
+
+    <section id="tarea 3">
+        <h2>Tarea 3: B en función del número de espiras</h2>
+
+        <ol>
+            <li> Ajusta la intensidad de la fuente de alimentación a cero y apaga la fuente de alimentación y vuelve a calibrar el teslámetro a 0 mT. </li>
+
+            
+            <li>Sustituye la bobina de 8 espiras por la bobina con  \( D = 2000 \)espiras como se muestra en la Figura ??. Coloca la punta del teslametro en el centro de la bobina y a mitad de su recorrido. En ese punto el campo magnético es máximo.</li>
+                
+                </li>
+
+            <li> Enciende la fuente de alimentación y con mucho cuidado fija la intensida de corriente a 150 mA. Evita intensidades altas para el tubo (sonda) Mantén la corriente fija en 150 mA y ajusta el teslámetro a cero antes de cada mediciónEnciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+
+        <h3>Tarea 3: Medir el campo magnético creado por bobinas de igual geometría, pero diferente número de espiras.</h3>
+        <p>.</p>
+        <ul>
+            <li>Mide el campo en el centro de cada bobina y a mitad de su longitud (\( L \)).</li>
+        </ul>
+        <div class="figure">
+            <img src="img/medicion_bobinas.png" alt="Medición de bobinas">
+            <figcaption>Figura 4: Medición en bobinas con diferente número de espiras.</figcaption>
+        </div>
+        <p>Tabula \( n \) (número de espiras por unidad de longitud), \( B_{exp} \) (medido) y \( B \) (calculado con la ecuación:</p>
+        <p>\[
+        B = \mu n I
+        \]</p>
+        <p>Representa \( B_{exp} \) frente a \( n \) y realiza un ajuste por mínimos cuadrados para analizar los resultados.</p>
+    </section>
+</div>
+
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>

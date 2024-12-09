@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 4: Determinación de la Velocidad del Sonido</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Navigation buttons */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            flex: 1 1 auto;
+            max-width: 200px;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .back-to-menu {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-to-menu a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .back-to-menu a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Práctica: Velocidad del Sonido</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivo</a>
+        <a href="#material">Material</a>
+        <a href="#teoria">Fundamentos Teóricos</a>
+
+        <a href="#realizacion">Preparación de la práctica</a>
+        <a href="#tarea">Tarea 1: Velocidad del sonido</a>
+    </div>
+
+    <!-- Objectives section -->
+    <section id="objetivos">
+        <h2>Objetivo</h2>
+        <p>Determinar la velocidad del sonido en el aire a temperatura ambiente.</p>
+    </section>
+
+</section>
+<!-- Materials section -->
+<section id="material">
+    <h2>Material</h2>
+    <ul>
+        <li>Un generador de funciones. Es una fuente de tensión que permite crear un voltaje alterno con forma de función triangular, cuadrada o sinusoidad a diferentes frecuencias. </li>
+        <li>Un altavoz que genera ondas sonoras de la misma frecuencia que la tensión que lo alimenta.</li>
+        <li>Un micrófono que detecta el sonido y transforma la onda acústica en un voltaje eléctrico.</li>
+        <li>Un osciloscopio que muestra las señales electricas (voltajes) provenientes del generador de funciones y del micrófono.</li>
+        <li>Cables de conexión.</li>
+        <li>Soporte y via para el altavoz y el micrófono.</li>
+    </ul>
+</section>
+
+    <!-- Theoretical section -->
+    <section id="teoria">
+        <h2>Fundamentos Teóricos</h2>
+        
+        <h3>¿Qué es una onda sonora?</h3>
+        <p>El sonido es una onda mecánica que necesita un medio para propagarse, como el aire, el agua o un sólido. 
+        Cuando un altavoz vibra, genera fluctuaciones de presión en el aire que se propagan como una onda longitudinal. 
+        En estas ondas, las partículas del medio oscilan en la misma dirección en la que viaja la onda.</p>
+        
+        <h3>Relación entre longitud de onda, frecuencia y velocidad</h3>
+        <p>La velocidad de una onda (\(v\)) está relacionada con su frecuencia (\(f\)) y su longitud de onda (\(\lambda\)) mediante la ecuación:</p>
+        <p>\[
+        v = \lambda f
+        \]</p>
+        <p> donde la frecuencia (\(f\)) se mide en Hercios (Hz=1/s) y la longitud de onda (\(\lambda\)) en metros para obtener la rápidez con la que la onda se propaga a través del medio (\(v\)) en m/s.</p>
+         <p>La frecuencia es el número de oscilaciones que ocurren por segundo y la longitud de onda (\(\lambda\)) es la distancia entre dos puntos consecutivos que están en la misma fase (por ejemplo, dos crestas o dos valles).
+        </p>
+
+        <div class="figure">
+            <img src="img/velocidad_sonido/onda_sinusoidad.jpg" alt="Montaje de la práctica">
+            <figcaption>Figura 1: Onda sinusoidad en un instante de tiempo fijo.</figcaption>
+        </div>
+
+        <p>En el aire, el sonido tiene una velocidad aproximada de 343 m/s a temperatura ambiente (20 °C). Sin embargo, esta velocidad varía ligeramente con la temperatura y las propiedades del medio.</p>
+        <p>La velocidad de propagación de la onda depende del medio en el que se propaga pero no de su frecuencia. La frecuencia de la onda está determinada por la fuente que genera la onda. </p>
+
+          
+        <h3>¿Cómo medimos la velocidad del sonido en esta práctica?</h3>
+        <p>En esta práctica, generaremos un sonido de frecuencia conocida utilizando un <strong>generador de funciones</strong> conectado a un <strong>altavoz</strong>. Este sonido será detectado por un <strong>micrófono</strong>, y las señales serán observadas en un <strong>osciloscopio</strong>.</p>
+        <p>El procedimiento es el siguiente:</p>
+        <ul>
+            <li>El generador de funciones envía una señal sinusoidal al altavoz, generando ondas sonoras.</li>
+            <li>El micrófono detecta el sonido y transforma la onda acústica en una señal eléctrica.</li>
+            <li>En el osciloscopio, observamos cómo cambia la fase de la señal del micrófono al moverlo respecto al altavoz.</li>
+        </ul>
+        <p>Cuando encontramos dos posiciones consecutivas donde las señales del altavoz y el micrófono están en fase, la distancia recorrida por el micrófono corresponde a una longitud de onda (\(\lambda\)). Con esta longitud de onda y la frecuencia (\(f\)), podemos calcular 
+            la velocidad del sonido con la fórmula:</p>
+        <p>\[
+        v = \lambda f
+        \]</p>
+
+
+
+    <!-- Procedure section -->
+    <section id="realizacion">
+        <h2> Preparación de la Práctica</h2>
+
+
+        <p>La Figura 2 muestra las conexiones entre los diferentes instrumentos de esta práctica:</p>
+
+        <div class="figure">
+            <img src="img/velocidad_sonido/montaje_practica.png" alt="Montaje de la práctica">
+            <figcaption>Figura 2: Montaje de la práctica.</figcaption>
+        </div>
+        <p>El micrófono está delante del altavoz, sobre un soporte que nos permite moverlo por una vía. La salida del generador de funciones está conectada a la vez al altavoz y al osciloscopio.  La salida del micrófono está conectada al osciloscopio. 
+        </p>
+
+
+        
+
+
+        <p>Sigue los pasos siguientes para poner la práctica en marcha:</p>
+        <ol>
+            <li>Colocar la punta del micrófono a unos 2 cm del altavoz, asegurándote de que están alineados, con la punta del microfono apuntando al centro del altavoz.</li>
+            <li>Enciende el generador de funciones y configuralo para emitir una señal sinusoidal con una frecuencia de 23 kHz como se muestra en la Figura 3. Comprueba que el piloto encima del botón de [output on] está en verde.</li>
+            <div class="figure">
+                <img src="img/velocidad_sonido/generador_funciones.png" alt="Montaje de la práctica">
+                <figcaption>Figura 3: Puesta en marcha del generador de funciones.</figcaption>
+            </div>
+
+            <li>Enciende el osciloscopio, como se muestra en la Figura 4. A continuación pulsa el botón de "Autoset" del osciloscopio y verifica que la señal del generador (línea amarilla) y la del micrófono (línea azul) están visibles en la pantalla del osciloscopio. 
+                Si la señal del micrófono (línea azul) no aparece en la pantalla puede ser debido a que el micrófono está apagado. Pulsa el botón rojo en la parte superior del micrófono para encenderlo.</li>
+            <div class="figure">
+                <img src="img/velocidad_sonido/osciloscopio.png" alt="Montaje de la práctica">
+                <figcaption>Figura 4: Puesta en marcha del osciloscopio.</figcaption>
+            </div>           
+
+            <li>Comprueba que la señal del micrófono (línea azul) es también una senal sinusoidal. Si la señal está saturada (aparece como una señal cuadratica o sinusoidal con los picos cortados) baja la amplitud del generador de funciones (Paso 5 en la Figura 3).  
+                Si aun así no se consigue eliminar la saturación, puedes intentar reducir la ganancia del micrófono con la rueda que este tiene en la parte superior. 
+                </li>
+
+            <li>Con la ruedas grande (amplitud) y pequeña (posición) del osciloscopio se puede cambinar la amplitud y posición de las señales del generador y del micrófono en la pantalla del osciloscopio. Moverlas hasta que ambas señales tengan mas o menos la misma amplitud y altura.</li>  
+
+            <li>Separar lentamente el micrófono del altavoz y observar cómo en la pantalla del osciloscopio la señal captada por el microfono (línea azul) se desplaza lateralmente. Este desplazamiento indica que la fase de esta señal está cambiando.</li>
+
+
+
+        </ol>
+
+        <p>   El espacio recorrido por el micrófono sobre la vía <strong> entre dos posiciones consecutivas </strong>  donde las dos señales están en fase es igual a la longitud de onda del sonido que sale del altavoz. Dos señales están en fase cuando sus máximos y mínimos coinciden (ver Figura 5)
+              Aunque se puede determinar la velocidad del sonido midiendo solo una vez la longitud de onda, esta medida tiene mucho error por lo que en la práctica vamos a promediar varias longitudes de onda para reducir el error en la determinación de la velocidad del sonido.</p>
+        <div class="figure">
+            <img src="img/velocidad_sonido/fase_no_fase.png" alt="Montaje de la práctica">
+            <figcaption>Figura 5: Ondas en fase y fuera de fase.</figcaption>
+        </div>        
+    </section>
+    <section id="tarea">
+        <h2> Tarea 1: Medida de la velocidad del sonido</h2>
+        <ol>
+        <li>Coloca el micrófono en la posición más cercana al altavoz donde ambas señales están en fase. Apunta en la tabla posición (\( x_0\)) del micrófono sobre la guía en <strong> metros </strong> usando un punto del soporte del micrófono como referencia.</li>
+        <li>Aleja lentamente el microfono del altavoz y cuenta las veces que las señales se colocan en fase. Una vez que las señales han estado en fase 10 veces (\( n=10 \)), apunta la posición final del micrófono sobre la guía (\( x_n\)) en <strong> metros </strong> usando el mismo punto de referencia que usaste para (\( x_0\)).</li>
+        <li>Realiza los calculos que se piden en la tabla para esta frecuencia y determina la velocidad del sonido.</li>
+        <li>Repite el procedimiento para las diferentes frecuencias (23, 25, 27 y 30 kHz) que se piden en la tabla, promediando la longitud de onda las veces que se indican en la tabla (\( n\)) y calcula la velocidad del sonido en cada caso.</li>
+        <li>Cálcula la velocidad del sonido teórica tal y como se indica en la hoja de datos. Contesta a las preguntas de la hoja de datos y 
+            una vez tengas las respuestas avisa al profesor/a responsable de la práctica para compartir tus respuestas.</li>
+        </ol>
+    </section>
+</div>
+    <!-- Back to menu button -->
+    <div class="back-to-menu">
+        <a href="#top">Volver al inicio</a>
+    </div>
+
+    <div class="back-to-menu">
+        <a href="indice_practicas.html">Volver al Índice de Prácticas</a>
+    </div>
+<!-- Footer -->
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>

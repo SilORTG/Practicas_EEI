@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 5: Campo Magnético y Bobinas</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+                /* Navigation buttons */
+                .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Práctica 5: Campo Magnético y Bobinas</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#material">Material</a>
+        <a href="#teoria">Fundamentos Teóricos</a>
+
+        <a href="#realizacion">Preparación de la práctica</a>
+        <a href="#tarea">Tarea 1: Velocidad del sonido</a>
+    </div>
+
+    <section id="objetivos">
+        <h2>Objetivo</h2>
+        <p>Medir los valores del campo magnético:
+            <ul>
+                <li> en el centro y sobre el eje de una bobina </li>
+                <li> en el centro de varias bobinas largas (solenoides). </li>
+            </ul>
+            Comparar los resultados obtenidos con los valores teóricos del campo magnético .</p>
+    </section>
+
+            <!-- Materials section -->
+            <section id="material">
+                <h2>Material</h2>
+                <ul>
+                    <li>Fuente de alimentación de corriente continua</li>
+                    <li>Un teslámtro para medir la intensidad del campo mágnetico. Mide en mT (miliTeslas)</li>
+                    <li>Bobina plana de 8 espiras</li>
+                    <li>Bobinas alargadas (solenoides) de 200, 400, 800 y 1000 espiras</li>
+                    <li>Cables de conexión con bananas en los extremos</li>
+                    <li>Soportes para el teslámetro y las bobinas</li>
+                    <li>Carril para mover el teslámetro a diferentes distancias de las bobinas</li>
+                </ul>
+            </section>
+
+    <!-- Section: Theory -->
+    <section id="teoria">
+        <h2>Fundamentos Teóricos</h2>
+        
+        <h3>Espiras y Bobinas</h3>
+        <p>Una <strong>espira</strong> es un enrollamiento de un material conductor (por ejemplo, cobre) de una sola vuelta. Si hacemos pasar una corriente eléctrica por una espira, se generará un campo magnético. Las líneas del campo magnético se concentran en el interior de la espira, indicando que allí el campo magnético es más intenso (ver Figura 1).</p>
+        <div class="figure">
+            <img src="img/campomagnetico/campo_magnetico_espira.jpg" alt="Campo magnético en una espira">
+            <figcaption>Figura 1: Campo magnético en una espira.</figcaption>
+        </div>
+        
+        <p>Una <strong>bobina</strong> es un enrollamiento de un material conductor con muchas vueltas, o muchas espiras. Si las espiras se enrollan en forma de espiral, a la bobina también se la llama <strong>solenoide</strong>.
+        Al añadir más espiras, las contribuciones al campo magnético se refuerzan en el interior de la bobina, generando un campo mágnetico más fuerte y prácticamente uniforme con líneas paralelas en el interior del solenoide (ver Figura 2).</p>
+        <div class="figure">
+            <img src="img/campomagnetico/Campo-Magnetico-solenoide.png" alt="Campo magnético en una bobina solenoide">
+            <figcaption>Figura 2: Campo magnético en una bobina solenoide.</figcaption>
+        </div>
+        
+        <h3>Campo magnético en bobinas</h3>
+        <p>El campo magnético se mide en teslas (T).
+        En el centro de una bobina con \( N \) espiras y radio \( R \), por la que circula una corriente \( I \), la intensidad del campo magnético \( B \) es:</p>
+        <p>\[
+        B = \frac{N \mu I}{2R}
+        \]</p>
+        <p>Aquí, \( \mu \) es la permeabilidad magnética del medio, y en el aire es aproximadamente \( \mu_0 = 4\pi \times 10^{-7} \, \text{T·m/A} \).</p>
+    
+        <p>El flujo magnético creado a una distancia \( d \) perpendicular al plano de la bobina es:</p>
+        <p>\[
+        B = \frac{N \mu I R^2}{2 \left( R^2 + d^2 \right)^{3/2}}
+        \]</p>
+
+        <div class="figure">
+            <img src="img/campomagnetico/eje_centro.png" alt="Campo magnético en una bobina solenoide">
+            <figcaption>Figura 3: Campo magnético en el centro (izquierda) y a una distancia d en el eje de una bobina (derecha).</figcaption>
+        </div>
+    
+    
+        <h3>Bobinas Solenoides</h3>
+        <p>Cuando una bobina tiene una longitud grande en comparación con el diámetro de las espiras, se forma un <strong>solenoide</strong>. En este caso, el campo magnético en el interior puede calcularse fácilmente mediante la Ley de Ampère:</p>
+        <p>\[
+        B = \mu I \frac{N}{L}
+        \]</p>
+        <p>Aquí:</p>
+        <ul>
+            <li>\( I \): Corriente que circula por la bobina.</li>
+            <li>\( \mu \): Permeabilidad magnética del medio.</li>
+            <li>\( N \): Número de espiras.</li>
+            <li>\( L \): Longitud del solenoide (ver Figura 4).</li>
+        </ul>
+
+        <div class="figure">
+            <img src="img/campomagnetico/longitud_solenoide.png" alt="Campo magnético en una bobina solenoide">
+            <figcaption>Figura 4: Longitud L de un solenoide en espiral.</figcaption>
+        </div>
+    
+        <h3>Factores que Influyen en el Campo Magnético</h3>
+        <p>Los principales factores que afectan la intensidad del campo magnético generado por una bobina son:</p>
+        <ul>
+            <li><strong>Número de vueltas:</strong> A mayor número de espiras, mayor será el campo magnético, ya que cada vuelta contribuye al campo total.</li>
+            <li><strong>Corriente eléctrica:</strong> Una mayor corriente genera un campo magnético más fuerte, ya que incrementa el flujo de electrones.</li>
+            <li><strong>Naturaleza del núcleo magnético:</strong> El núcleo magnético de una bobina es el material que se encuentra dentro o alrededor de las espiras y afecta significativamente la intensidad del campo magnético generado. 
+                Materiales con alta permeabilidad magnética, como el hierro, concentran y refuerzan el campo magnético generado. </li>
+         </ul>
+    
+        <h3>Dirección del Campo Magnético</h3>
+        <p>La dirección del campo magnético se determina mediante la regla de la mano derecha. Coloca la mano alrededor de la bobina con los dedos apuntando en la dirección de la corriente eléctrica (del polo positivo al negativo), como se muestra en la Figura 5.
+         El pulgar indica la cara por donde salen las líneas de campo magnético (norte).</p>
+
+         <div class="figure">
+            <img src="img/campomagnetico/direccion_campo_magnetico.jpg" alt="Campo magnético en una bobina solenoide">
+            <figcaption>Figura 5: Regla de la mano derecha para bobinas.</figcaption>
+        </div>
+        
+        <p>Por convención, la cara de la bobina por donde salen las líneas de campo se denomina <strong>norte</strong>, y la cara por donde entran se denomina <strong>sur</strong>.</p>
+    </section>
+    
+    <!-- Section: Assembly and Tasks -->
+    <section id="tarea 1">
+        <h2>Tarea 1: B en función de la intensidad</h2>
+
+        <ol>
+            <li>Mide y anota el diámetro de la bobina plana de 8 espiras. La bobina de 8 espiras está en un soporte cuadrado con un agujero en el centro y dos tomas para conectar la corriente (ver Figura 6): </li>
+            <div class="figure">
+                <img src="img/campomagnetico/bobina_8_espiras.png" alt="Bobina de 8 espiras">
+                <figcaption>Figura 6: Bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Coloca la bobina en el soporte (Figura 1 (b)) y a continuación sujetala con el perno al soporte y que quede en posición vertical como se muestra en la Figura 7.</li>
+
+            <div class="figure">
+                <img src="img/campomagnetico/montaje_bobina_8espiras.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 7: Montaje para medir campo magnético en la bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Regula la altura del teslámetro para que la punta del tubo del teslámetro, que es donde esta la sonda, quede en el centro de la bobina (ver Figura 7). </li>
+            <li>Enciende el teslámetro (el botón de encendido se encuentra en la parte trasera del aparato) y ajusta el valor del campo magnético a cero. Es difícil obtener un valor fijo de 0 mT, pero el valor debería oscilar entre 0.01 o 0.02 mT. Para ajustar el teslametro, ver Figura 8. </li>
+            <div class="figure">
+                <img src="img/campomagnetico/teslametro_ajuste.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 8: Ajuste del teslámetro.</figcaption>
+            </div>
+            <li>Conecta la bobina a la fuente de intensidad y enciende la fuente </li>           
+
+            <li>Ajusta la corriente de la fuente de intensidad a unos 0.5 A y apunta el campo magnético que obtienes con el teslámetro para esa intensidad.  </li>     
+
+            <li>Repite las medidas para valores de intensidad de hasta 3 A en intervalos de aproximadamente 0.25 A  </li>     
+
+        </ol>
+
+    <section id="tarea 2">
+           
+        <h2>Tarea 2: B en función de la distancia</h2>
+
+        <ol>
+            <li>Manten el mismo montaje que para la tarea 1. Apaga la fuente de alimentación y vuelve a calibrar el teslámetro a 0 mT. </li>
+
+            <li>Enciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A </li>
+
+            <li>Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético sea un 10% del campo a distancia cero \( B_0 \). Anota la posición del teslámetro sobre el carril \(p_10 \) y el valor del campo magnético</li>           
+
+            <li>Mide el campo magnético en nueve distancias diferentes entre \(p_0 \) y \(p_10 \) que estén aproximadamente distribuidas uniformente.  </li>     
+
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Ajuste del teslámetro a cero.</figcaption>
+            </div>
+
+ 
+        </ol>
+
+
+        <p> Ajusta el teslámetro a cero antes de cada medida:</p>
+        <div class="figure">
+            <img src="img/teslametro_ajuste.png" alt="Ajuste del teslámetro">
+            <figcaption>Figura 2: Ajuste del teslámetro a cero.</figcaption>
+        </div>
+
+        <p>Conecta la bobina a la fuente de intensidad. Mide el campo \( B_{exp} \) en el centro de la bobina para diferentes valores de corriente (\( I \)), desde 0.25 A hasta 3 A, en intervalos de 0.25 A. Calcula el valor teórico del campo \( B \) usando la ecuación anterior y compara los resultados experimentales con los teóricos.</p>
+
+        <h3>Tarea 2: Medir el campo magnético en el eje longitudinal de una bobina a diferentes distancias de su centro.</h3>
+        <p>Con el mismo montaje de la Tarea 1, fija la corriente a 3 A y mide el campo \( B_{exp} \) desplazando la sonda a lo largo del eje perpendicular a la bobina:</p>
+        <ul>
+            <li>Inicia con la sonda en el centro de la bobina (distancia cero).</li>
+            <li>Mueve la sonda hasta que la lectura se reduzca al 10% del valor inicial (\( B_m \)).</li>
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias.</li>
+        </ul>
+        <div class="figure">
+            <img src="img/eje_bobina.png" alt="Eje longitudinal de la bobina">
+            <figcaption>Figura 3: Eje longitudinal de la bobina.</figcaption>
+        </div>
+        <p>Tabula y grafica \( B_{exp} \) frente a la distancia \( b \), comparando con los valores teóricos dados por la ecuación correspondiente.</p>
+
+        <h3>Tarea 3: Medir el campo magnético creado por bobinas de igual geometría, pero diferente número de espiras.</h3>
+        <p>Sustituye la bobina de 8 espiras por otras con \( D = 2000 \), \( 500 \), \( 400 \) y \( 150 \) espiras. Mantén la corriente fija en 150 mA y ajusta el teslámetro a cero antes de cada medición.</p>
+        <ul>
+            <li>Mide el campo en el centro de cada bobina y a mitad de su longitud (\( L \)).</li>
+        </ul>
+        <div class="figure">
+            <img src="img/medicion_bobinas.png" alt="Medición de bobinas">
+            <figcaption>Figura 4: Medición en bobinas con diferente número de espiras.</figcaption>
+        </div>
+        <p>Tabula \( n \) (número de espiras por unidad de longitud), \( B_{exp} \) (medido) y \( B \) (calculado con la ecuación:</p>
+        <p>\[
+        B = \mu n I
+        \]</p>
+        <p>Representa \( B_{exp} \) frente a \( n \) y realiza un ajuste por mínimos cuadrados para analizar los resultados.</p>
+    </section>
+</div>
+
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>
