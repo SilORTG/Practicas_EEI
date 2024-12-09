@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 4: Transformador</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+                /* Navigation buttons */
+                .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Práctica 5: Campo Magnético y Bobinas</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#material">Material</a>
+        <a href="#teoria">Fundamentos Teóricos</a>
+
+        <a href="#realizacion">Preparación de la práctica</a>
+        <a href="#tarea">Tarea 1: Velocidad del sonido</a>
+    </div>
+
+    <section id="objetivos">
+        <h2>Objetivo</h2>
+        <p>Analizar la tensión inducida y la corriente en la bobina secundaria de un transformador de nucleo de hierro en función del número de vueltas de las bobinas del transformador y de la tensión que alimenta la bobina primaria.</p>
+    </section>
+
+            <!-- Materials section -->
+            <section id="material">
+                <h2>Material</h2>
+                <ul>
+                    <li>Transformador con nucleo de hierro</li>
+                    <li>Fuente de alimentación de corriente alterna sinusoidad de frecuencia 50 Hz con salidas de tension fijas de 2 V a 14 V en intervalos de 2 V</li>
+                    <li>Interruptor bipolar</li>
+                    <li>Cuatro Multimetros</li>
+                    <li>Reóstato: una resistencia variable al modificar la longitud</li>
+
+
+                </ul>
+            </section>
+
+    <!-- Section: Theory -->
+    <section id="teoria">
+        <section>
+            <h2>¿Qué es un Transformador?</h2>
+            <p>
+                Un <strong>transformador</strong> es un dispositivo eléctrico que puede modificar la tensión de un circuito de corriente alterna (CA). 
+                Es ampliamente utilizado para:
+            </p>
+            <ul>
+                <li>Aumentar la tensión para transportar energía eléctrica a largas distancias (transformadores elevadores).</li>
+                <li>Reducir la tensión a niveles seguros antes de entregar electricidad a hogares e industrias (transformadores reductores).</li>
+            </ul>
+            <p>
+                <strong>Ventaja clave:</strong> Reducir las pérdidas por efecto Joule 
+                (\(P_{\text{pérdidas}} = R \times I^2\)) durante el transporte de electricidad, al disminuir la corriente mediante un aumento de la tensión.
+            </p>
+
+            <h3>Componentes de un Transformador</h3>
+            <ul>
+                <li><strong>Núcleo Magnético:</strong> Hecho de hierro o materiales ferromagnéticos, canaliza el flujo magnético entre las bobinas primaria y secundaria. En nuestra práctica tiene forma de rectangulo
+                y esta formado por hierro laminado (ver Figura 1)</li>
+                <li><strong>Bobina Primaria:</strong> Consiste en un hilo conductor enrollado en espiras alrededor del nucleo y conectado a la fuente de alimentación. Genera el flujo magnético cuando circula corriente alterna.</li>
+                <li><strong>Bobina Secundaria:</strong> Como la bobina primaria es un hilo conductor enrollado en espiras alrededor del nucleo pero en este caso esta conectado a una carga. Recibe el flujo magnético generado en el núcleo
+                     y los convierte nuevamente en corriente eléctrica por inducción electromagnética. Conectada al circuito de carga. La corriente inducida en esta bobina depende de la relación entre el número de vueltas de las dos bobinas.</li>
+            </ul>
+
+            <p> No hay conexión eléctrica directa entre la bobian primaria y la secudandaria. Están acopladas magnéticamente a través deñ núcleo. El número de vueltas de la bobina primaria </p>
+        
+            <h3>Principio de Funcionamiento</h3>
+            <p>
+                El transformador opera gracias al principio de la <strong>inducción electromagnética</strong>, que establece:
+            </p>
+            <ul>
+                <li>Una corriente alterna en la bobina primaria genera un flujo magnético variable en el núcleo del transformador.</li>
+                <li>Este flujo magnético induce una corriente en la bobina secundaria.</li>
+            </ul>
+            <p>
+                Ambos circuitos están aislados eléctricamente, pero están acoplados magnéticamente a través del núcleo.
+            </p>
+        
+
+        
+            <h3>Relación de Transformación</h3>
+            <p>
+                La relación de tensiones entre las bobinas depende del número de espiras de la bobina primaria (\(n_1\) y de la bobina secundaria \(n_2\)):
+            </p>
+            <ul>
+                <li>Si \(n_2 > n_1\), el transformador es <strong>elevador de tensión</strong>.</li>
+                <li>Si \(n_2 < n_1\), es <strong>reductor de tensión</strong>.</li>
+            </ul>
+            <p>
+                \[
+                \frac{V_s}{V_p} = \frac{n_2}{n_1} \quad \text{y} \quad \frac{I_p}{I_s} = \frac{n_2}{n_1}
+                \]
+            </p>
+        
+            <h3>Transformador Ideal</h3>
+            <p>
+                En un transformador ideal la potencia se conserva:
+            </p>
+            <ul>
+                <li>La potencia en la bobina primaria es igual a la potencia en la secundaria:
+                    \[
+                    P_p = P_s \quad \rightarrow \quad V_p \times I_p = V_s \times I_s
+                    \]
+                </li>
+            </ul>
+            <p>
+                Esto implica que si se aumenta la tensión (\(V_s > V_p\)), la corriente disminuirá (\(I_s < I_p\)).
+            </p>
+        
+            <h3>Pérdidas en Transformadores</h3>
+            <p>En la práctica, ningún transformador es completamente eficiente debido a:</p>
+            <ul>
+                <li>
+                    <strong>Pérdidas magnéticas:</strong> Pérdidas en el núcleo por corrientes parásitas y ciclos de histéresis.
+                </li>
+                <li>
+                    <strong>Pérdidas eléctricas:</strong> Pérdidas en los conductores debido a su resistencia.
+                </li>
+            </ul>
+            <p>Se utilizan dos pruebas para evaluar estas pérdidas:</p>
+            <ul>
+                <li>
+                    <strong>Prueba de circuito abierto:</strong> 
+                    La bobina secundaria no está conectada. Solo una pequeña corriente circula en la primaria para mantener el flujo magnético. 
+                    Permite medir pérdidas en el núcleo.
+                </li>
+                <li>
+                    <strong>Prueba de cortocircuito:</strong> 
+                    La bobina secundaria está cortocircuitada, generando una corriente alta. Permite evaluar pérdidas en los conductores.
+                </li>
+            </ul>
+        
+            <h3>Modo de Funcionamiento Normal</h3>
+            <p>
+                En condiciones normales, el transformador suministra potencia a una carga conectada al circuito secundario:
+            </p>
+            <ul>
+                <li>
+                    Cuando la carga está conectada, se produce una caída de tensión en los bornes de la bobina secundaria debido al 
+                    <strong>efecto Ferranti</strong>. Este fenómeno es proporcional a la magnitud de la carga.
+                </li>
+            </ul>
+            <p>
+                En los transformadores, la corriente alterna en las bobinas genera un flujo magnético variable, lo que facilita la transferencia de energía 
+                entre los circuitos primario y secundario.
+            </p>
+        </section>
+        
+
+         
+    <!-- Section: Assembly and Tasks -->
+    <section id="Preparacion practica">
+        <h2>Preparación de la práctica</h2>
+
+        <p>Para realizar esta práctica hay que montar el siguiente circuito:</p>
+
+        <div class="figure">
+            <img src="img/transformador/esquema_circuito (1).png" alt="Bobina de 8 espiras">
+            <figcaption>Figura 6: Circuito que hay que montar.</figcaption>
+        </div>
+
+        <p>A continuación se muestra paso a paso como montar el cirtcuito:</p>
+        <ol>
+            <li>Comenzamos montando la parte izquierda del circuito monstrado en la figura 6, es decir, todo lo conectado con la bobina primaria del transformador.  </li>
+
+            <li>Comenzamos con la fuente tensión alterna de alterna, que se muestra en la figura. Primero fijamos la tensión de la fuente a 2 V tal como se muestra en la figura en la rueda de la fuente </li>
+
+            <div class="figure">
+                <img src="img/transformador/fuente_alterna_circuito.png" alt="Bobina de 8 espiras">
+                <figcaption>Figura 6: Bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Conectamos un cable a la entrada señalada con la flecha azul. Esta es el polo de salida de la tensión alterna positiva de la fuente. A continuación vamos a poner el amperimetro como se muestra en la figura</li>
+
+            <div class="figure">
+                <img src="img/campomagnetico/montaje_bobina_8espiras.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 7: Montaje para medir campo magnético en la bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>La salida del amperimetro se conecta a la bobina primaria del transformador. Regula la altura del teslámetro para que la punta del tubo del teslámetro, que es donde esta la sonda, quede en el centro de la bobina (ver Figura 7). </li>
+            <li>Enciende el teslámetro (el botón de encendido se encuentra en la parte trasera del aparato) y ajusta el valor del campo magnético a cero. Es difícil obtener un valor fijo de 0 mT, pero el valor debería oscilar entre 0.01 o 0.02 mT. Para ajustar el teslametro, ver Figura 8. </li>
+            <div class="figure">
+                <img src="img/campomagnetico/teslametro_ajuste.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 8: Ajuste del teslámetro.</figcaption>
+            </div>
+            <li>Conecta la bobina a la fuente de intensidad y enciende la fuente </li>           
+
+            <li>Ajusta la corriente de la fuente de intensidad a unos 0.5 A y apunta el campo magnético que obtienes con el teslámetro para esa intensidad.  </li>     
+
+            <li>Repite las medidas para valores de intensidad de hasta 3 A en intervalos de aproximadamente 0.25 A  </li>     
+
+        </ol>
+
+    </section>   
+        
+    
+    <!-- Section: Assembly and Tasks -->
+    <section id="tarea 1">
+        <h2>Tarea 1: B en función de la intensidad</h2>
+
+        <ol>
+            <li>Mide y anota el diámetro de la bobina plana de 8 espiras. La bobina de 8 espiras está en un soporte cuadrado con un agujero en el centro y dos tomas para conectar la corriente (ver Figura 6): </li>
+            <div class="figure">
+                <img src="img/campomagnetico/bobina_8_espiras.png" alt="Bobina de 8 espiras">
+                <figcaption>Figura 6: Bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Coloca la bobina en el soporte (Figura 1 (b)) y a continuación sujetala con el perno al soporte y que quede en posición vertical como se muestra en la Figura 7.</li>
+
+            <div class="figure">
+                <img src="img/campomagnetico/montaje_bobina_8espiras.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 7: Montaje para medir campo magnético en la bobina de 8 espiras.</figcaption>
+            </div>
+
+            <li>Regula la altura del teslámetro para que la punta del tubo del teslámetro, que es donde esta la sonda, quede en el centro de la bobina (ver Figura 7). </li>
+            <li>Enciende el teslámetro (el botón de encendido se encuentra en la parte trasera del aparato) y ajusta el valor del campo magnético a cero. Es difícil obtener un valor fijo de 0 mT, pero el valor debería oscilar entre 0.01 o 0.02 mT. Para ajustar el teslametro, ver Figura 8. </li>
+            <div class="figure">
+                <img src="img/campomagnetico/teslametro_ajuste.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 8: Ajuste del teslámetro.</figcaption>
+            </div>
+            <li>Conecta la bobina a la fuente de intensidad y enciende la fuente </li>           
+
+            <li>Ajusta la corriente de la fuente de intensidad a unos 0.5 A y apunta el campo magnético que obtienes con el teslámetro para esa intensidad.  </li>     
+
+            <li>Repite las medidas para valores de intensidad de hasta 3 A en intervalos de aproximadamente 0.25 A  </li>     
+
+        </ol>
+    </section>
+    <section id="tarea 2">
+           
+        <h2>Tarea 2: B en función de la distancia</h2>
+
+        <ol>
+            <li>Manten el mismo montaje que para la tarea 1. Apaga la fuente de alimentación y vuelve a calibrar el teslámetro a 0 mT. </li>
+
+            <li>Enciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A </li>
+
+            <li>Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+    </section>
+
+    <section id="tarea 3">
+        <h2>Tarea 3: B en función del número de espiras</h2>
+
+        <ol>
+            <li> Ajusta la intensidad de la fuente de alimentación a cero y apaga la fuente de alimentación y vuelve a calibrar el teslámetro a 0 mT. </li>
+
+            
+            <li>Sustituye la bobina de 8 espiras por la bobina con  \( D = 2000 \)espiras como se muestra en la Figura ??. Coloca la punta del teslametro en el centro de la bobina y a mitad de su recorrido. En ese punto el campo magnético es máximo.</li>
+                
+                </li>
+
+            <li> Enciende la fuente de alimentación y con mucho cuidado fija la intensida de corriente a 150 mA. Evita intensidades altas para el tubo (sonda) Mantén la corriente fija en 150 mA y ajusta el teslámetro a cero antes de cada mediciónEnciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+
+        <h3>Tarea 3: Medir el campo magnético creado por bobinas de igual geometría, pero diferente número de espiras.</h3>
+        <p>.</p>
+        <ul>
+            <li>Mide el campo en el centro de cada bobina y a mitad de su longitud (\( L \)).</li>
+        </ul>
+        <div class="figure">
+            <img src="img/medicion_bobinas.png" alt="Medición de bobinas">
+            <figcaption>Figura 4: Medición en bobinas con diferente número de espiras.</figcaption>
+        </div>
+        <p>Tabula \( n \) (número de espiras por unidad de longitud), \( B_{exp} \) (medido) y \( B \) (calculado con la ecuación:</p>
+        <p>\[
+        B = \mu n I
+        \]</p>
+        <p>Representa \( B_{exp} \) frente a \( n \) y realiza un ajuste por mínimos cuadrados para analizar los resultados.</p>
+    </section>
+</div>
+
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>

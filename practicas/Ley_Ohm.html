@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica: Ley de Ohm</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Navigation buttons */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            flex: 1 1 auto;
+            max-width: 200px;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .back-to-menu {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-to-menu a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .back-to-menu a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+    </style>
+    
+</head>
+<body>
+
+<header>
+    <h1>Práctica: Ley de Ohm</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#material">Material</a>
+        <a href="#teoria">Fundamentos Teóricos</a>
+
+        <a href="#tarea1">Tarea 1: Medida de Resistencias</a>
+        <a href="#tarea2">Tarea 2: Resistencia Equivalente</a>
+        <a href="#tarea3">Tarea 3: Curva V-I</a>
+    </div>
+
+    <section id="objetivos">
+        <h2>Objetivos</h2>
+        <ul>
+            <li>Comparar el valor nominal de varias resistencias con el valor obtenido midiendo con un multímetro y con el calculado con la ley de Ohm</li>
+            <li>Comprobar el valor de la resistencia equivalente de:
+            <ol>
+                <li>dos resistencias en paralelo</li>
+                <li>dos resistencias en serie</li>
+            </ol> 
+
+            <li>Comprobar que la línea característica de la tensión en función de la intensidad es lineal para un resistor y no lineal para una bombilla incandescente</li>
+        </ul>
+    </section>
+
+            <!-- Materials section -->
+            <section id="material">
+                <h2>Material</h2>
+                <ul>
+                    <li>Fuente de alimentación de corriente continua</li>
+                    <li>Dos multímetros para medir la tensión y la intensidad</li>
+                    <li>Una tabla con nueve resistencias diferentes</li>
+                    <li>Cables de conexión con bananas en los extremos</li>
+                    <li>Bombilla incandescente</li>
+
+
+                </ul>
+            </section>
+
+    <!-- Section: Theory -->
+    <section id="teoria">
+        <section>
+                <h2>Fundamentos Teóricos</h2>
+            
+                <h3>La Ley de Ohm</h3>
+                <p>
+                    La <strong>Ley de Ohm</strong> describe la relación entre la tensión (\(V\)), la corriente (\(I\)) y la resistencia (\(R\)) en un circuito eléctrico. 
+                    Esta ley establece que, para un conductor metálico a temperatura constante, la cantidad de corriente que fluye a través de él es proporcional a la tensión aplicada al conductor. Matemáticamente, se expresa como:
+                </p>
+                <p>
+                    \[
+                    I = \frac{V}{R}
+                    \]
+                </p>
+                <p>
+                    Donde:
+                    <ul>
+                        <li>\(I\): Intensidad de corriente en amperios (A).</li>
+                        <li>\(V\): Tensión en voltios (V).</li>
+                        <li>\(R\): Resistencia en ohmios (\(\Omega\)).</li>
+                    </ul>
+                </p>
+                <p>
+                    Esta ley es fundamental en la teoría de circuitos y se utiliza ampliamente para analizar y diseñar sistemas eléctricos.
+                </p>
+            
+
+            
+                <h3>Resistencia Equivalente</h3>
+                <p>
+                    La <strong>resistencia equivalente</strong> es el valor de resistencia que puede sustituir a un conjunto de resistencias conectadas en un circuito sin alterar las condiciones eléctricas. 
+                    Las resistencias pueden asociarse en <strong>serie</strong> o en <strong>paralelo</strong>.
+                </p>
+
+                <figure id="fig-serie" style="text-align: center;">
+                    <img src="img/ohm/resistencia_paralelo.png" alt="Resistencias en serie">
+                    <figcaption>Figura 1: Asociación de dos resistencias R1 y R2. Panel superior: en serie. Panel inferior: en paralelo</figcaption>
+                </figure>
+            
+                <h4>Asociación en Serie</h4>
+                <p>
+                    Dos o más resistencias están en serie cuando cada una se encuentra conectada a continuación de la otra en el mismo hilo conductor (ver Figura 1). La resistencia equivalente (\(R_{\text{eq}}\)) de una asociación en serie se calcula como:
+   
+                </p>
+
+                <p>
+                    \[
+                    R_{\text{eq}} = R_1 + R_2 + \dots + R_n
+                    \]
+                </p>
+          
+            
+                <h4>Asociación en Paralelo</h4>
+                <p>
+                    Dos o más resistencias están en paralelo cuando comparten los mismos extremos (ver Figura 1). En este caso, la tensión (\(V\)) aplicada a cada resistencia es la misma, pero la corriente (\(I\)) se divide entre ellas.
+                </p>
+                <p>
+                    La resistencia equivalente (\(R_{\text{eq}}\)) de una asociación en paralelo se calcula como:
+                </p>
+                <p>
+                    \[
+                    \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}
+                    \]
+                </p>
+
+
+
+                    <h3>Valor Nominal de las Resistencias y el Código de Colores</h3>
+                
+                    <h4>Valor Nominal de las Resistencias</h4>
+                    <p>
+                        El <strong>valor nominal</strong> de una resistencia indica su resistencia eléctrica, expresada en ohmios (\(\Omega\)), 
+                        y es un parámetro crucial para seleccionar resistencias adecuadas en circuitos eléctricos. Este valor puede estar indicado de dos formas:
+                    </p>
+                    <ul>
+                        <li><strong>Directamente impreso:</strong> En resistencias grandes, el valor nominal puede estar escrito en su superficie, 
+                        junto con su tolerancia.</li>
+                        <li><strong>Mediante código de colores:</strong> En resistencias pequeñas, el valor nominal se representa con un 
+                        sistema de bandas de colores.</li>
+                    </ul>
+                
+                    <h4>Código de Colores</h4>
+                    <p>
+                        El <strong>código de colores</strong> es un sistema estándar para indicar el valor nominal y la tolerancia de las resistencias. 
+                        Este código utiliza bandas de colores que representan cifras y factores multiplicativos. Una resistencia típica tiene 4, 5 o 6 bandas:
+                    </p>
+                    <ol>
+                        <li>Las primeras dos (o tres) bandas representan los dígitos significativos.</li>
+                        <li>La siguiente banda es el factor multiplicativo.</li>
+                        <li>La última banda indica la tolerancia, que expresa el margen de error del valor nominal.</li>
+                    </ol>
+                
+                    <h4>Tabla de Colores y sus Valores</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Color</th>
+                                <th>Dígito</th>
+                                <th>Multiplicador</th>
+                                <th>Tolerancia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Negro</td>
+                                <td>0</td>
+                                <td>\(10^0 = 1\)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Marrón</td>
+                                <td>1</td>
+                                <td>\(10^1 = 10\)</td>
+                                <td>±1%</td>
+                            </tr>
+                            <tr>
+                                <td>Rojo</td>
+                                <td>2</td>
+                                <td>\(10^2 = 100\)</td>
+                                <td>±2%</td>
+                            </tr>
+                            <tr>
+                                <td>Naranja</td>
+                                <td>3</td>
+                                <td>\(10^3 = 1,000\)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Amarillo</td>
+                                <td>4</td>
+                                <td>\(10^4 = 10,000\)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Verde</td>
+                                <td>5</td>
+                                <td>\(10^5 = 100,000\)</td>
+                                <td>±0.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Azul</td>
+                                <td>6</td>
+                                <td>\(10^6 = 1,000,000\)</td>
+                                <td>±0.25%</td>
+                            </tr>
+                            <tr>
+                                <td>Violeta</td>
+                                <td>7</td>
+                                <td>\(10^7 = 10,000,000\)</td>
+                                <td>±0.1%</td>
+                            </tr>
+                            <tr>
+                                <td>Gris</td>
+                                <td>8</td>
+                                <td>\(10^8 = 100,000,000\)</td>
+                                <td>±0.05%</td>
+                            </tr>
+                            <tr>
+                                <td>Blanco</td>
+                                <td>9</td>
+                                <td>\(10^9 = 1,000,000,000\)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Dorado</td>
+                                <td>-</td>
+                                <td>\(10^{-1} = 0.1\)</td>
+                                <td>±5%</td>
+                            </tr>
+                            <tr>
+                                <td>Plateado</td>
+                                <td>-</td>
+                                <td>\(10^{-2} = 0.01\)</td>
+                                <td>±10%</td>
+                            </tr>
+
+                            <tr>
+                                <td>Nada</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>±20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <h4>Ejemplo de Interpretación</h4>
+                    <p>
+                        Supongamos una resistencia con las siguientes bandas de colores:
+                        <strong>Marrón, Negro, Rojo, Dorado</strong>:
+                    </p>
+                    <ol>
+                        <li><strong>Marrón (1):</strong> Primer dígito = 1.</li>
+                        <li><strong>Negro (0):</strong> Segundo dígito = 0.</li>
+                        <li><strong>Rojo (x100):</strong> Multiplicador = \(10^2 = 100\).</li>
+                        <li><strong>Dorado (±5%):</strong> Tolerancia = ±5%.</li>
+                    </ol>
+                    <p>
+                        El valor nominal de esta resistencia es \( R_n \), con una tolerancia de ±5%, lo que significa que su resistencia puede variar entre 950 \(\Omega\) y 1,050 \(\Omega\).
+                    </p>
+                <p>En la Figura 2 se pueden ver más ejemplos de como calcular los valores nominales de una resistencia</p>
+                    <figure style="text-align: center;">
+                        <img src="img/ohm/Screenshot 2024-12-03 at 16-12-17 Calculadora de resistencias por código de colores.png" alt="Resistencias en serie" style="max-width: 300px; height: auto;">
+                        
+                        <figcaption>Figura 2: Valor nominal de resistencias. (Imagén de https://masterplc.com/calculadora/codigo-de-colores-de-resistencias/)</figcaption>
+                    </figure>
+                   
+
+                    <h3>Curva Característica V-I</h3>
+                    <p>
+                        La curva característica V-I de un componente eléctrico es una representación gráfica que muestra cómo varía la tensión (\(V\)) en función de la intensidad (\(I\)) aplicada. 
+                        Dependiendo del comportamiento del componente, esta curva puede ser lineal o no lineal:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Resistencia Lineal:</strong> Para una resistencia en condiciones ideales (baja potencia disipada y temperatura constante), 
+                            la curva V-I es una línea recta que obedece la Ley de Ohm.
+                        </li>
+                        <li>
+                            <strong>Resistencia No Lineal:</strong> En componentes como bombillas, donde la potencia aplicada aumenta la temperatura, la resistencia varía. 
+                            Esto provoca que la curva V-I deje de ser lineal.
+                        </li>
+                    </ul>
+                    <p>
+                        En esta práctica, observará estos dos casos utilizando un resistor y una bombilla de luz.
+                    </p>
+
+            </section>
+            
+        
+      
+    
+    <!-- Section: Assembly and Tasks -->
+    <section id="tarea1">
+        <h2>Tarea 1A: Valores nominales y medida directa de una resistencia</h2>
+        <ol>
+            <li>Mide con el multimetro el valor del resistor número 1 como se muestra en la Figura 3. Para ello conecta un cable entre un extremo del resistor y la salida COM (Común) del multimetro.
+                Conecta otro cable entre el otro extremo del resistor y la salida del multimetro con la etiqueta de la letra griega omega, \(\Omega\), que es el símbolo que representa al ohmio. </li>
+                <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+                    <!-- Primera figura -->
+                    <figure style="text-align: center;">
+                        <img src="img/ohm/Screenshot 2024-11-28 at 14-57-56 Guions EM i ones.png" alt="Resistencias en paralelo" style="max-width: 300px; height: auto;">
+                        <figcaption>Figura 3a: Medir resistencias con multímetro.</figcaption>
+                    </figure>
+            
+                    <!-- Segunda figura -->
+                    <figure style="text-align: center;">
+                        <img src="img/ohm/multimetro_para_medir_resistencia.jpg" alt="Resistencias en serie" style="max-width: 300px; height: auto;">
+                        
+                        <figcaption>Figura 3b: Puertos de salida del multímetro para medir resistencias.</figcaption>
+                    </figure>
+                </div>
+
+            <li>Coloca el selector del mutímetro (la rueda) en la etiqueta donde pone ohmios \(\Omega\). Anota el resultado obtenido con el multímetro \( R_m\) en la Tabla 1A. No olvides indicar las unidades, si la resistencia es mayor de 999 \(\Omega\) indica los resultados en \(\ K\ Omega\)</li>
+
+
+            <li>Repite el procedimiento para el resto de resistores de la tabla. </li>     
+
+            <li>Saca una foto a la tabla de resistencias, asegurandote de que se aprecian bien las bandas de colores de las resistencias. En casa, usa la foto para calcular los valores nominales de las resistencias \( R_n \)</li>  
+        </ol>    
+            
+        <h2>Tarea 1B: Ley de Ohm</h2>
+         <p>Vamos a medir el valor de las resistencias usando la ley de Ohm, para lo que necesitamos conocer la tensión entre los extremos de la resistencia y la intensidad que la atraviesa. Para eso montaremos el circuito de la figura <a href="#fig-serie">Figura 1</a> con el resistor número 1.</p>      
+
+                    
+                        
+                        
+            <figure id="fig-serie" style="text-align: center;">
+                            
+                <img src="img/ohm/circuito_resistencia.png" alt="Resistencias en serie" style="max-width: 100%; height: auto;">
+                            
+                <figcaption>Figura 3: Circuito para medir resistencias con la ley de Ohm</figcaption>
+                       
+            </figure>
+        
+            <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="border: 1px solid #ddd; padding: 10px;">Componente</th>
+                        <th style="border: 1px solid #ddd; padding: 10px;">Símbolo</th>
+                        <th style="border: 1px solid #ddd; padding: 10px;">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">Amperímetro</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            <img src="img/ohm/amperimetro_sym.png" alt="Símbolo del amperímetro" style="max-width: 50px; height: auto;">
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            Mide la intensidad de corriente que fluye por el circuito.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">Voltímetro</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            <img src="img/ohm/voltimetro_sym.png" alt="Símbolo del voltímetro" style="max-width: 50px; height: auto;">
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            Mide la tensión eléctrica entre dos puntos del circuito.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">Resistencia</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            <img src="img/ohm/resis_sym.png" alt="Símbolo de la resistencia" style="max-width: 50px; height: auto;">
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            Limita la corriente en un circuito eléctrico.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px;">Fuente de Tensión</td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            <img src="img/ohm/fuente_sym.png" alt="Símbolo de la fuente de tensión" style="max-width: 50px; height: auto;">
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 10px;">
+                            Proporciona energía eléctrica al circuito.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <ol>        
+            <li>Comenzamos a montar el circuito sin el voltímetro, solo con los elementos conectados en serie (la parte en gris de la Figura 3). Conecta con un cable, el polo positivo de la fuente de alimentación con un extremo de la resistencia (P). </li>  
+            <div class="figure">
+                <img src="img/ohm/fuente_alimentación.jpg" alt="Ajuste del teslámetro">
+                <figcaption>Figura 4: Fuente de alimentación de continua. El polo positivo esta indicado en azul y el negativo en rojo.</figcaption>
+            </div>
+
+            <li>Conecta con otro cable el otro extremo de la resistencia (M) con el puerto de corriente baja del amperímetro. La Figura 5 indica como se tiene que poner el multimetro para que funcione como amperímetro. </li>
+            <div class="figure">
+                <img src="img/ohm/multimetro_amperimetro.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 5: Multimetro para medir corriente continua de menos de 2 A.</figcaption>
+            </div>
+
+            <li>Para cerrar el circuito conecta el puerto COM del amperímetro con el polo negativo de la fuente de alimnetación.  </li>
+
+            <li>Por último conectamos el voltímetro entre los extremos de la resistencia. Conecta un extremo de la resistencia con la salida COM del multímetro y el otro extremo con el puerto de voltaje. 
+                La Figura 6 indica como se tiene que poner el multimetro para que funcione como voltímetro.</li>  
+                <div class="figure">
+                    <img src="img/ohm/multimetro_voltimetro.png" alt="Ajuste del teslámetro">
+                    <figcaption>Figura &: Multimetro para medir tensión continua (DC).</figcaption>
+                </div>
+
+            <li>·Enciende la fuente de alimentación y usando las ruedas </li>  
+
+            <li>Antes de tomar medidas consulta con el profesor del laboratorio si el circuito está bien montado. </li>      
+
+            <li>Antes de tomar medidas consulta con el profesor del laboratorio si el circuito está bien montado. </li>    
+                    
+            <li>Repite el procedimiento para el resto de resistores de la tabla menos el 10. </li>           
+
+
+        </section>
+        
+    </section>
+    <section id="tarea2">
+           
+        <h2>Tarea 2: Resistencia Equivalente</h2>
+        <p> En esta tarea vamos a medir la resistencia equivalente de los resistores número 3 y 4 cuando están en serie y en paralelo y vamos a compararlos con sus valores teóricos</p>
+        <ol>
+            <li>Monta el circuito de la figura, donde los resistores 3 y 4 estan conectados en paralelo. El voltimetro mide la tensión en los extremos de la resistencia equivalente y el amperimetro la intensidad que la atraviesa. Se trata simplemete de volver a montar el circuito de la Figura ??
+                y a continuación conectar el resistor número 4 en paralelo con el resistor número 3.</li>
+
+            <li>Enciende de nuevo la fuente de alimentación y ajusta la tensión a unos 15 V. Apunta la tensión y la intensidad marcarda por los multímetros.  </li>
+
+            <li>Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/ohm/multimetro.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+    </section>
+
+    <section id="tarea3">
+        <h2>Tarea 3: Líneas V-I características</h2>
+
+        <ol>
+            <li> Monta de nuevo el circuito de la Figura 5 para la resistencia número 10. </li>
+            <li> Fija la fuente de tensión a aproximadamente 1 V y anota en la tabla el valor de la tensión y la intensidad en la resitencia que marcan los multimetros. </li>
+            <li> Repite el paso anterior para valores de tensión hasta unos 10 V con pasos aproximados de 1 V. </li>
+            <li> Apaga la fuente de alimentación y pon todos los valores a cero </li>
+
+            <li> Anota la temperatura ambiente del laboratorio</li>
+
+            <li> Calcula usando el multímetro el valor de la resistencia de la bombilla incandescente a temperatura ambiente</li>
+
+            <li> Sustituye el resistor número 10 por la bombilla incandescente y calcula como varía la intensidad en función de la tensión siguiendo el mismo procedimiento que has usado para el resistor número 10</li>
+
+            
+            <li>Sustituye la bobina de 8 espiras por la bobina con  \( D = 2000 \)espiras como se muestra en la Figura ??. Coloca la punta del teslametro en el centro de la bobina y a mitad de su recorrido. En ese punto el campo magnético es máximo.</li>
+                
+                </li>
+
+            <li> Enciende la fuente de alimentación y con mucho cuidado fija la intensida de corriente a 150 mA. Evita intensidades altas para el tubo (sonda) Mantén la corriente fija en 150 mA y ajusta el teslámetro a cero antes de cada mediciónEnciende de nuevo la fuente de alimentación y ajusta la intensidad a unos 3 A Anota el valor del campo magnético en el centro de la espira (distancia cero) \( B_0 \). Apunta la posición del teslámetro sobre el carril usando la regla que el carril lleva incorporada \(p_0 \)</li>
+
+            <li>Aleja el teslámetro de la bobina moviendolo sobre el carril hasta que el valor del campo magnético se reuzca al 10% del valor inicial \( B_0 \). Anota la posición del teslámetro sobre el carril (\(p_{10} \)) y el valor del campo magnético</li>   
+            
+            <div class="figure">
+                <img src="img/campomagnetico/eje_bobina.png" alt="Ajuste del teslámetro">
+                <figcaption>Figura 9: Campo magnetico a distancia de la espira.</figcaption>
+            </div>
+
+            <li>Toma medidas del campo magnético en al menos nueve posiciones intermedias entre \(p_0 \) y \(p_{10} \) que estén distribuidas uniformente.  </li>     
+
+
+        </ol>
+
+
+    </section>
+</div>
+
+    <!-- Back to menu button -->
+    <div class="back-to-menu">
+        <a href="#top">Volver al Menú de Inicio</a>
+    </div>
+
+    <div class="back-to-menu">
+        <a href="indice_practicas.html">Volver al Índice Práctica</a>
+    </div>
+
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>

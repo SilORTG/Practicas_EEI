@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 3: Campo Eléctrico y Líneas Equipotenciales</title>
+
+    <!-- Incluir MathJax para fórmulas matemáticas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        ol li, ul li {
+            margin: 8px 0;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .figure figcaption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        footer {
+            background-color: #f4f4f4;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Navigation buttons */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            flex: 1 1 auto;
+            max-width: 200px;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .back-to-menu {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-to-menu a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .back-to-menu a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Práctica: Campo Eléctrico y Líneas Equipotenciales</h1>
+    <p>GEEI 2024-25 - Universitat de les Illes Balears</p>
+</header>
+
+<div class="container">
+
+    <!-- Navigation buttons for quick access -->
+    <div class="buttons">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#material">Material</a>        
+        <a href="#teoria">Fundamentos Teóricos</a>   
+        <a href="#tarea1">Tarea 1: Dipolo Eléctrico</a>
+        <a href="#tarea2">Tarea 2: Condensador de Placas Paralelas</a>
+        <a href="#tarea3">Tarea 3: Análisis de Resultados</a>
+
+    </div>
+
+    <!-- Objectives section -->
+    <section id="objetivos">
+        <h2>Objetivos</h2>
+        <ul>
+            <li>Visualizar las líneas equipotenciales en un plano generadas por:
+                <ul>
+                    <li>Dos electrodos circulares pequeños (Dipolo eléctrico)</li>
+                    <li>Dos electrodos rectos y paralelos (Condensador de placas paralelas)</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+        <!-- Materials section -->
+        <section id="material">
+            <h2>Material</h2>
+            <ul>
+                <li>Fuente de alimentación de corriente continua</li>
+                <li>Multímetro para medir la tensión</li>
+                <li>Dos hojas de papel conductor (papel teledeltos)</li>
+                <li>Bote de tintura de plata y pincel</li>
+                <li>Cables de conexión con palas y bananas</li>
+                <li>Chinchetas para conectar los cables al papel</li>
+            </ul>
+        </section>
+
+    <!-- Theoretical section -->
+    <section id="teoria">
+        <h2>Fundamentos Teóricos</h2>
+        <p>Un <strong>campo eléctrico</strong> es una región donde una carga eléctrica experimenta una <strong>fuerza</strong> debido a la presencia de otras cargas. Esta fuerza se origina porque las cargas tienden a moverse de una región de <strong>alto potencial</strong> (donde tienen más energía) hacia una de <strong>bajo potencial</strong> (donde tienen menos energía).</p>
+        <p>Para entender y visualizar la distribución del campo eléctrico en una región, utilizamos <strong>líneas de campo eléctrico</strong> y <strong>líneas equipotenciales</strong>. Ambas nos ayudan a representar cómo se comportan las fuerzas eléctricas y el potencial en el espacio, pero representan conceptos distintos y mantienen una relación específica entre sí.</p>
+    
+        <h3>¿Qué son las Líneas de Campo Eléctrico?</h3>
+        <p>Las <strong>líneas de campo eléctrico</strong> son líneas imaginarias que indican la dirección y la intensidad del campo eléctrico generado por una o más cargas:</p>
+        <ul>
+            <li><strong>Dirección</strong>: Las líneas de campo eléctrico parten de las cargas positivas y se dirigen hacia las cargas negativas. Esto representa la dirección en la que una carga positiva experimentaría una fuerza.</li>
+            <li><strong>Intensidad</strong>: La densidad de las líneas de campo indica la intensidad del campo eléctrico. Cuanto más juntas están, más fuerte es el campo eléctrico en esa región.</li>
+        </ul>
+    
+        <h3>¿Qué son las Líneas Equipotenciales?</h3>
+        <p>Las <strong>líneas equipotenciales</strong> conectan puntos en el espacio que tienen el mismo <strong>potencial eléctrico</strong>. Esto significa que en todos los puntos de una línea equipotencial, el valor del potencial eléctrico es el mismo.
+            
+        <h3>Relación entre las Líneas de Campo Eléctrico y las Líneas Equipotenciales</h3>
+        <p>Las líneas de campo eléctrico y las líneas equipotenciales tienen una relación particular:</p>
+        <ul>
+            <li><strong>Perpendicularidad</strong>: Las líneas equipotenciales son siempre perpendiculares a las líneas de campo eléctrico en cualquier punto del espacio.</li>
+            <li><strong>Dirección del Campo</strong>: El campo eléctrico siempre apunta en la dirección de mayor descenso del potencial eléctrico, es decir, de un potencial más alto a uno más bajo. </li>
+            <li><strong>Intensidad del Campo y Distancia entre Líneas Equipotenciales</strong>: Cuando las líneas equipotenciales están muy juntas, indica un campo eléctrico fuerte. En cambio, cuando las líneas equipotenciales están más separadas, el campo es más débil.</li>
+        </ul>
+    
+        <h3>¿Qué es el Papel Teledeltos?</h3>
+        <p>El <strong>papel teledeltos</strong> es un tipo de papel impregnado con polvo de grafito, que le otorga una conductividad eléctrica moderada (ni muy alta ni muy baja). Esto significa que puede conducir electricidad, aunque no tan eficientemente como un metal, y es ideal para simular campos eléctricos de forma controlada.</p>
+        <p>Para generar un campo eléctrico en el papel teledeltos, conectamos una fuente de voltaje a dos puntos, llamados <strong>electrodos</strong>. La diferencia de potencial entre estos dos puntos establece un campo eléctrico en la región circundante.
+        <p> Dibujamos los electrodos en el papel con una tinta conductora que contiene partículas de plata, material que actúa como un buen conductor y asegura que el voltaje se distribuya uniformemente en las zonas con la pintura. 
+         Al conectar una fuente de voltaje continua a estos electrodos, se establece una pequeña corriente eléctrica en el papel  y un campo eléctrico constante, que podemos estudiar midiendo el potencial en diferentes puntos del papel con un voltímetro.</p>
+    
+           
+        <h3>¿Qué es un Dipolo Eléctrico?</h3>
+        <p>Un <strong>dipolo eléctrico</strong> es un sistema compuesto por dos cargas de igual magnitud pero de signos opuestos (una positiva y otra negativa) separadas por una distancia. 
+            En el laboratorio, podemos simular un dipolo eléctrico en el papel teledeltos al crear dos puntos de carga opuestos y aplicar una diferencia de potencial entre ellos. Esto genera un campo eléctrico similar al de un dipolo ideal, y podemos medir el potencial y trazar las líneas equipotenciales alrededor de este sistema.</p>
+        </p>En un dipolo, el campo eléctrico sale de la carga positiva y entra en la carga negativa (ver Figura 1, izquierda), creando un patrón de líneas de campo que se curvan entre ambas cargas. </p>
+     
+
+        <div class="figure">
+            <img src="img/campo_electrico/condensador y dipolo_lineas.png" alt="Líneas de campo eléctrico">
+            <figcaption>Figura 1: Líneas de campo eléctrico (negro) y las líneas equipotenciales (rojo) para un dipolo eléctrico (izquierda) y un condensador de placas paralelas (derecha)</figcaption>
+        </div>           
+        <p>
+        <h3>¿Qué es un Condensador de Placas Paralelas?</h3>
+            <p>Un <strong>condensador de placas paralelas</strong> es un dispositivo con dos placas conductoras planas y paralelas entre sí. Al aplicar una diferencia de potencial (voltaje) entre estas placas, se crea un campo eléctrico uniforme en la región entre ellas.
+            En está región las líneas de campo eléctrico son rectas y paraledas (ver Figura 1, derecha), y la intensidad del campo es aproximadamente constante en toda la región entre las placas </p>
+        <ul>
+        </ul>
+        <p>En la práctica de laboratorio, podemos simular un capacitor de placas paralelas en el papel teledeltos dibujando dos líneas rectas y paralelas en el papel (las “placas” del condensador) y aplicamos un voltaje entre ellas. 
+        </p>
+
+    </section>
+
+
+
+    <!-- Task 1: Dipole section -->
+    <section id="tarea1">
+        <h2>Tarea 1: Dipolo Eléctrico</h2>
+        <ol>
+            <li>Dibuja dos puntos circulares en el papel conductor (papel teledeltos) con lápiz y repásalos con pintura de plata. 
+		Los puntos deben estar separados más o menos entre una cuarta o quinta parte de la amplitud del papel, tal y como muestra la Figura 2.<strong> Hay que agitar muy bien la solución de plata antes de pintar de forma que la plata se mezcle con el líquido. 
+		Comprueba antes de comenzar a pintar que las partículas de plata no están depositadas en el fondo del bote.</strong></li>
+            
+            <div class="figure">
+                <img src="img/campo_electrico/dipolo.png" alt="Esquema del dipolo eléctrico">
+                <figcaption>Figura 2: Esquema del dipolo eléctrico.</figcaption>
+            </div>
+
+
+            <li>Fija los extremos palados de los cables (ver Figura 3) con chinchetas sobre los puntos dibujados y conecta el otro extremo de los cables a la fuente de alimentación (12 V). <strong>Asegurate de que la chincheta está en contacto con los puntos dibujados en plata y con los extremos palados del cable.</strong></li>
+
+            <div class="figure">
+                <img src="img/campo_electrico/cable_palado.png" alt="Esquema del dipolo eléctrico">
+                <figcaption>Figura 3: Extremo palado del cable</figcaption>
+            </div>  
+
+            <li>Enciende la fuente de alimentación y ajusta el voltaje de la fuente a 12 V si es posible.</strong></li>
+
+            <li>Configura el multímetro para medir tensión continua \( \overline{V} \) y ajusta el rango a 12 V (ver Figura 4).</li>
+
+            <div class="figure">
+                <img src="img/campo_electrico/multimetro.png" alt="Esquema del dipolo eléctrico">
+                <figcaption>Figura 4: Multímetro ajustado para medir corriente continua en el rago de 12 V</figcaption>
+            </div>           
+
+	   <li> Como se muestra en la Figura 5, coloca la sonda del multímetro conectada al COM sobre la chincheta conectada al polo negativo de la fuente de alimentación. Colocar la otra sonda sobre el punto del papel donde se quiere medir el voltaje.
+		 Observar que la diferencia de potencial no es la misma en todo el papel.</li>
+
+            <div class="figure">
+                <img src="img/campo_electrico/medida_dipolo.png" alt="Esquema del dipolo eléctrico">
+                <figcaption>Figura 5: Configuración del multímetro.</figcaption>
+            </div>
+
+
+            <li>Mide el potencial en diferentes puntos del papel y determina las líneas equipotenciales trazando los puntos de igual potencial. En particular, hay que dibujar al menos tres lineas equipotenciales: </li>
+                <ul>
+                    <li>La primera es la línea con el mismo potencial que el punto medio entre los electrodos. Para ello, coloca la sonda conectada al COM sobre el electrodo conectado al polo negativo. Colocar la otra sonda en el papel,
+                        en el punto medio entre las chinchetas (Ver Figura 6, punto P). Anotar el voltaje en ese punto en el papel teledeltos a lápiz.  A continuación, mover la sonda aproximadamente medio centímetro alrededor de ese punto y localizar cuando el voltímetro vuelve a marcar el mismo valor de potencial. En ese punto
+                        hacer un pequeño agujero en el papel con la punta de la sonda. Marcar de la misma manera más puntos en los dos sentidos para visualizar la línea equipotencial . Anotar a lápiz en el papel teledeltos el valor del voltaje y unir con lápiz la línea que une los pequeños agujeros que habéis marcado con la punta de la sonda 
+                        a lo largo de esa línea</li>
+
+                        <div class="figure">
+                            <img src="img/campo_electrico/primer_punto_dipolo.png" alt="Esquema del dipolo eléctrico">
+                            <figcaption>Figura 6: Punto de partida de la primera línea equipotencial.</figcaption>
+                        </div>
+
+
+                    <li> Repetir el proceso para encontrar un potencial que corresponda a una curva cerrada alrededor del electrodo conectado al polo <strong>negativo</strong> de la fuente. Es importante que siempre la sonda conectada al COM del voltímetro esté sobre el electrodo conectado al polo negativo.  </li>
+
+                    <li> Repetir el proceso para encontrar un potencial que corresponda a una curva cerrada alrededor del electrodo conectado al polo <strong>positivo</strong> de la fuente. Es importante que siempre la sonda conectada al COM del voltímetro esté sobre el electrodo conectado al polo negativo.  </li>
+                 </ul>
+                 <li> Antes de comenzar la siguiente tarea, consulta con el profesor responsable de la práctica de laboratorio si has de hacer más líneas equipotenciales  </li>
+        </ol>
+    </section>
+
+    <!-- Task 2: Parallel plates capacitor section -->
+    <section id="tarea2">
+        <h2>Tarea 2: Condensador de Placas Paralelas</h2>
+        <ol>
+            <li>Dibuja a lápiz dos líneas paralelas en el papel conductor, de aproximadamente 4 cm de longitud y separadas por unos 4 cm. Asegurate de que las líneas están bastante alejadas de los bordes del papel como se muestra en la Figura 7. Repasa las líneas con pintura de plata.</li>
+            
+            <div class="figure">
+                <img src="img/campo_electrico/condensador_paralelo_sin_lineas.png" alt="Esquema del condensador de placas paralelas">
+                <figcaption>Figura 7: Esquema del condensador de placas paralelas.</figcaption>
+            </div>
+
+            <li>Clava las chinchetas en el centro de cada línea y conecta los cables a la fuente de alimentación.</li>
+            <li>Comprueba que la diferencia de potencial en cada línea es constante a lo largo de la misma. Para ello, coloca una sonda en la chinqueta y la otra en el borde derecho de la misma línea donde tienes la primera sonda. Si la linea de plata está bien dibujada, 
+                conduce perfectamente la electricidad y por lo tanto la diferencia de potencial entre ambos puntos tiene que ser practicamente cero. Comprueba que obtienenes el mismo resultado con el borde izquierdo de la línea. Si no, aplica más pintura de plata. Repite el procedimiento para la otra línea</li>
+            <li>Traza las líneas equipotenciales siguiendo el mismo procedimiento que en la tarea anterior. En este caso, tienes que obtener al menos 3 lineas equipotenciales (Ver Figura 8). 
+                <ul>
+                    <li>Una línea con el potencial del punto medio entre las placas</li>
+                    <li>Una curva cerrada alrededor de cada una de las placas </li>
+                 </ul>
+            </li>
+            <div class="figure">
+                <img src="img/campo_electrico/condensador_paralelo.png" alt="Esquema del condensador de placas paralelas">
+                <figcaption>Figura 8: Líneas equipotenciales del condensador de placas paralelas.</figcaption>
+            </div>
+            <li> Antes de comenzar la siguiente tarea, consulta con el profesor responsable de la práctica de laboratorio si has de hacer más líneas equipotenciales  </li>
+        </ol>
+
+    </section>
+
+    
+    <!-- Task 2: Parallel plates capacitor section -->
+    <section id="tarea3">
+        <h2>Tarea 3: Analisis de Resultados</h2>
+        <p>Contesta a las siguientes preguntas en base a tus resultados experimentales y con ayuda de la sección de fundamentos teóricos.  Una vez tengas las repuestas, avisa al profesor del laboratorio para compartir tus conclusiones:</p>
+        <ul>
+            <li>Pregunta 1: Compara los resultados experimentales de las lineas equipotenciales con los resultados teóricos (Figuras 1 y 8). Indica posibles causas por las que los resultados experimentales difieren de los resultados teoricos. </li>
+            <li> Pregunta 2: A la vista de los resultados obtenidos, indica como son las líneas de campo electrico en tu caso para el dipolo y el condensador de placas paralelas. Indica la dirección en la que apuntan y donde el campo eléctrico sería más intenso.</li>
+            <li> Pregunta 3: Al colocar una carga negativa en medio de las placas del condesador, indica hacia donde se mueve dicha carga. </li>
+         </ul>
+    </section>
+
+</div>
+    <!-- Back to menu button -->
+    <div class="back-to-menu">
+        <a href="#top">Volver al inicio</a>
+    </div>
+
+    <div class="back-to-menu">
+        <a href="indice_practicas.html">Volver al Índice de Prácticas</a>
+    </div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 Universidad de las Islas Baleares - Prácticas de Laboratorio de Física
+</footer>
+
+</body>
+</html>
